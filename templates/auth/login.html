@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+
+    <form method="post" class="login">
+    {% csrf_token %}
+
+        {{ form.as_p}}
+    <div>
+        <button type="submit">Login</button>
+    </div>
+    </form>
+    <p>
+        Agar akkauntingiz bolmasa
+        <a href="{% url 'auth:register' %}">register</a>qismiga oting
+    </p>
+{% endblock %}
+
+
+
+
+
+
+
+

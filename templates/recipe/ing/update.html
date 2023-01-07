@@ -1,0 +1,24 @@
+{% extends "base.html %}
+
+{% block title %}Recipe Update{% endblock %}
+
+{% clock content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="examleinputEmail1" class="form-label">Title</label>
+        {{ form.title }}
+    </div>
+    <div class="mb-3">
+        <label for="examleinputEmail2" class="form-label">Quantity</label>
+        {{ form.quantity }}
+    </div>
+    <div class="mb-3">
+        <label for="examleinputEmail3" class="form-label">Unit</label>
+        {{ form.unit }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

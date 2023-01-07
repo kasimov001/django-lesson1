@@ -1,0 +1,16 @@
+{% extends "base.html %}
+
+{% block title %}Tag Creation{% endblock %}
+
+{% clock content %}
+
+
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="examleinputEmail1" class="form-label">title</label>
+    {{ form.title }}
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

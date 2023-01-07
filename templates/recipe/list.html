@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} Recipes list {% endblock %}
+{% block content %}
+<div class="button-group">
+    <a href="{% url 'recipes:my_list' %}" >My recipes</a>
+    <a href="{% url 'recipes:create' %}" >Add new recipe</a>
+    <a href="{% url 'recipes:tag_created' %}" >Add new Tags</a>
+    <!--    class="btn btn-link-->
+</div>
+<div class="search-div mt-3">
+    <form class="search-from" action="{% url 'recipes:list' %}">
+        <div class="row-3 align-items-center">
+            <div class="col-auto">
+                <input autocomplete="off" type="search" class="form-control" id="exampleFromControlInput1"
+                       placeholder="search..." name="q">
+                <input type="submit" value="search">
+            </div>
+            <div class="col-auto">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 ">
+            <ol class=" list-group list-group-numbered mt-3">
+                {% for object in object_list %}
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <a class="{% if object.is_active %}text-danger{% endif %}"
+                               href="{% url 'recipes:detail' object.slug %}">{{ object.title }}</a>
+                        </div>
+                        {{ object.auther }}
+                    </div>
+                    <span class="badge bg-primary rounded-pill">{{ object.ingredients.count }}</span>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="col-md-3">
+            <div class="button-group">
+                <a href="" class="m-2">Hammasi</a>
+<!--                class="btn btn-outline-dark btn-sm m-2"-->
+                {% for tag in tags_list %}
+                <a href="?tag={{ tag.title }}" class="m-1">{{tag.title}}</a>
+<!--                btn btn-outline-dark btn-sm m-1-->
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,77 @@
+<!--{% load static %}-->
+<!--<div>-->
+<!--    <ul class="nav_link">-->
+<!--        <li class="logo">-->
+<!--            <a href="{% url 'articles:list' %}">-->
+<!--                <img src="{% static 'image/img.png' %}" alt="">-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="{% url 'articles:list' %}"><h2>article</h2></a>-->
+<!--        </li>-->
+
+<!--        <li class="nav-item dropdown">-->
+<!--            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"-->
+<!--               aria-expanded="false">-->
+<!--                Recipes-->
+<!--            </a>-->
+<!--            <ul class="dropdown-menu">-->
+<!--                <li><a class="dropdown-item" href="{% url 'recipes:list' %}">Recipes</a></li>-->
+<!--                <li><a class="dropdown-item" href="{% url 'recipes:tag_list' %}">Tags</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <div class="profile">-->
+<!--            {% if request.user.is_authenticated %}-->
+<!--            <span>{{ request.user }}</span>,-->
+<!--            <span><a href="{% url 'auth:logout' %}">logout</a></span>-->
+<!--            {% else %}-->
+<!--            <span><a href="{% url 'auth:login' %}">login</a></span>-->
+<!--            {% endif %}-->
+<!--        </div>-->
+<!--    </ul>-->
+<!--</div>-->
+
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'articles:list' %}">
+            <img src="{% static 'image/img.png' %}" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'articles:list' %}">Articles</a>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" aria-current="page" href="{% url 'blogs:list' %}"><h2>Blog</h2></a>-->
+<!--                </li>-->
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Recipes
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'recipes:list' %}">Recipes</a></li>
+                        <li><a class="dropdown-item" href="{% url 'recipes:tag_list' %}">Tags</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="d-flex" role="search">
+                <div class="profile">
+                    {% if request.user.is_authenticated %}
+                    <span>{{ request.user }}</span>
+                    <span><a href="{% url 'auth:logout' %}">Logout</a></span>
+                    {% else %}
+                    <span><a href="{% url 'auth:login' %}"></a>Login</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+

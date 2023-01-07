@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}TRY DJANGO{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+
+{% include "nav.html" %}
+<hr>
+<div>
+    {% for message in messages %}
+        <p>
+          {{ message }}
+        </p>
+    {% endfor %}
+</div>
+
+{% block content %}
+
+{% endblock %}
+<hr>
+<div>footer</div>
+</body>
+</html>>

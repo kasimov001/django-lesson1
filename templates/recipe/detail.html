@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Recipe Detile {% endblock %}
+
+{% block content %}
+    <div class="button-group">
+        <a href="{% url 'recipes:list' %}" class="btn btn-link "> back to recipe list</a>
+        <a href="{% url 'recipes:ing_create' object.slug %}" class="btn btn-link {% if request.user != object.author and not request.user.is_superuser %}disabled{% endif %}">Add Ingredient</a>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ object.title }}</h5>
+            <p class="card-text"> {{ object.auther }} </p>
+            <div class="button-group mb-3">
+                {% for tag in object.tags.all %}
+                <a href="#" class="btn btn-outline-dark btn-sm">{{tag.title}}</a>
+                {% endfor %}
+            </div>
+<!--            {% if request.user == object.author %}-->
+            <a href="{% url 'recipes:update' object.slug %}" class=" {% if request.user != object.author and not request.user.is_superuser %}disabled{% endif %}">Edit</a>
+            <a href="{% url 'recipes:delete' object.slug %}" class=" {% if request.user != object.author and not request.user.is_superuser %}disabled{% endif %}">Delete</a>
+<!--            {% endif %}-->
+        </div>
+        <div class="card-footer text-muted">
+            {{ object.crated_date }}
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        {% for ingredient in recipe.ingredient.all %}
+        <div class="col-sm mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ ingredient.title }}</h5>
+                    <p class="card-text">{{ ingredient.quantitle }} - {{ ingredient.get_unit_display.lower }}</p>
+                    {% if request.user == object.author %}
+                    <a href="{% url 'recipes:ing_update' ingredient.recipe.slug ingredient.id %}" class="btn btn-light"> Edit </a>
+                    <a href="{% url 'recipes:ing_delete' ingredient.recipe.slug ingredient.id %}" class="btn btn-dange">" Detele </a>
+                    {% endif %}
+                </div>
+                <div class="card_footer text-muted">
+                    {{ ingredient.created_date }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

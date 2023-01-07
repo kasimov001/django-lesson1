@@ -1,0 +1,46 @@
+.article-left li{
+    padding: 7px 0;
+}
+body {
+    background-color: powderblue !important;
+}
+.nav_line li {
+    display: inline-block;
+    margin-left: 15px;
+}
+.nav_line .logo img{
+    width: 120px
+}
+form button, form input [type=submit], .btn{
+    padding: 7px 30 px;
+    font-family: Arial;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+    curser: pointer;
+    background-color: darkslateblue;
+}
+form button:hover, form input[type=submit]:hover, .btn{
+    background-color: cornflowerblue;
+    transition: .5s;
+
+}
+form.login div{
+    margin-top: 10 px;
+}
+
+.profile{
+    float: right;
+    margin-top 20px;
+}
+.form-control {
+    margin-top: 10 px
+}
+.tags {
+    height: 200px:
+}
+.form-check {
+    padding-left: 0;
+}

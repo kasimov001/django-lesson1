@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{object.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    {% if object.image %}
+        <div>
+            <img src="{{object.image.url}}" alt="">
+        </div>
+    {% endif %}
+    <p>{{ object.content }}</p>
+    <div>
+      <code>{{ object.created_data }}</code>
+    </div>
+    <div>
+        <span>last edited: <i>{{ object.modified_data }}</i></span>
+    </div>
+    <div>
+        <a class="" href="{% url 'articles:edit' object.slug %}">
+            <button class="btn">Edit</button>
+        </a>
+        <a href="{% url 'articles:delete' object.slug %}">
+            <button class="btn" style="beckground-color: red">Delete</button>
+        </a>
+    </div>
+{% endblock %}

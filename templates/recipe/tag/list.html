@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Recpie list {% endblock %}
+{% block content %}
+<div class="button-group">
+    <a href="{% url 'recipes:list' %}" >back to recipes list</a>
+<!--    class="btn btn-link"-->
+</div>
+<ol class="list-group list-group-numbered">
+    {% for object in object_list %}
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold"></div>
+            <a href="{% url 'recipes:tag_detail' object.id %}">{{ object.title }}</a>
+        </div>
+        </div>
+    </li>
+    {% endfor %}
+</ol>
+{% endblock %}
